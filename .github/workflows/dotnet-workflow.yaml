@@ -33,7 +33,7 @@ jobs:
         dotnet-version: ['5.0.x']
     steps:
       - uses: actions/checkout@v2
-      - uses: morinslash/GitHubActions-DotNet-Workflows/.github/actions/category-test-action
+      - uses: morinslash/GitHubActions-DotNet-Workflows/.github/actions/category-test-action@master
         with:
           CATEGORY: "UnitTest"
   
@@ -45,6 +45,6 @@ jobs:
         dotnet-version: ['5.0.x']
     steps:
       - uses: actions/checkout@v2
-      - uses: morinslash/GitHubActions-DotNet-Workflows/.github/actions/category-test-action
+      - uses: morinslash/GitHubActions-DotNet-Workflows/.github/actions/category-test-action@master
         with:
           CATEGORY: "IntegrationTest"
