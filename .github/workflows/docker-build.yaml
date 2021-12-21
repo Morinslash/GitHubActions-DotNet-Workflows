@@ -1,0 +1,30 @@
+name: Docker CD
+
+on: 
+  workflow_call:
+    inputs:
+      registry-url:
+        required: true
+        type: string
+      context:
+        required: true
+        type: string
+
+jobs:
+  Build-and-Push-Docker-Image:
+    runs-on: ubuntu-latest
+    needs: test
+    name: Docker Build, Tag, Push
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build container image
+      uses: docker/build-push-action@v1
+      with:
+        context: ${{ inputs.context }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: ${{ inputs.registry-url }}
+        tag_with_sha: true
