@@ -5,8 +5,8 @@ on:
     inputs:
       registry-url:
         required: true
-        type: string
-      context:
+        type: string 
+      directory:
         required: true
         type: string
 
@@ -18,9 +18,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build container image
-      uses: docker/build-push-action@v1
+      uses: docker/build-push-action@v2
       with:
-        context: ${{ inputs.context }}
+        directory: ${{ inputs.directory }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
