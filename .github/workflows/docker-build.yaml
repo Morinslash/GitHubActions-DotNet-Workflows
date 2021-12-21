@@ -8,6 +8,9 @@ on:
         type: string 
       context:
         required: true
+        type: string      
+      tags:
+        required: true
         type: string
 
 jobs:
@@ -27,7 +30,7 @@ jobs:
           repository: ${{ inputs.registry-url }}
           registry: docker.pkg.github.com
           push: true
-          tag_with_sha: true
+          tags: ${{ inputs.tags }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
         
